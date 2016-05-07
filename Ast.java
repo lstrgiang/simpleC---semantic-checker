@@ -395,6 +395,12 @@ class AssignStmt extends Stmt {
         this.exp = exp;
     }
     public boolean check(Type returnType){
+      if(lhs instanceof RelationalExp)
+        Errors.semanticError(lhs.getLine(),lhs.getChar(),
+          "Assignment of relational expression");
+      if(exp instanceof RelationalExp)
+        Errors.semanticError(exp.getLine(),exp.getChar(),
+          "Assignment from relational expression");
       Type typeLeft = lhs.typeCheck();
       Type typeExp = exp.typeCheck();
       if(typeLeft.isSameTypeAs(typeExp) && typeLeft.isIntType())
@@ -893,6 +899,8 @@ class ArithmeticExp extends BinaryExp{
   public Type typeCheck(){
     Type type1 = exp1.typeCheck();
     Type type2 = exp2.typeCheck();
+    if(exp2 instanceof RelationalExp || exp1 instanceof RelationalExp)
+      return Type.CreateSimpleType(Type.errorTypeName);
     if(type1.isErrorUndefinedType() || type2.isErrorUndefinedType())
       return Type.CreateSimpleType(Type.errorUndefinedTypeName);
     if(type1.isSameTypeAs(type2))
