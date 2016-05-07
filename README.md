@@ -18,7 +18,7 @@ required or vice-versa;
 > - ...  
 > Your checker must be implemented within file Ast.java, as new methods (and new classes if necessary) with the main method ```void check()``` in class Ast.Program.  
 > If the checker encounters any semantic error or warning in the program, it should call the method Errors.semanticError or Errors.semanticWarn with the line number at which the error or warning occurs and a suitable explanatory message.  
-> **Implementation**
+> **Implementation**  
 > The start project contains the skeleton that supports lexical and syntax analyzing. You are strongly urged (though not required) to use this code as the basis of your own checker.  
 > **Submission**  
 > Compress your project into a single file named <StudentID_Assignment1>.zip/rar and submit to our course website. Make sure that both source code and a runnable version of your program, named Checker.jar, are also included. Then we can test your program by just type:  
