@@ -23,6 +23,8 @@ required or vice-versa;
 > **Submission**  
 > Compress your project into a single file named <StudentID_Assignment1>.zip/rar and submit to our course website. Make sure that both source code and a runnable version of your program, named Checker.jar, are also included. Then we can test your program by just type:  
 >      java –jar Checker.jar <input_file>  
+
+
 #Usage
 > You can compile and run the start project by following steps:
 > Note: make sure that you have java and javac commands configured that can run in your command line environment.
