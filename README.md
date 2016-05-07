@@ -6,43 +6,43 @@ program ::= declList
 declList ::= declList decl
            | /* epsilon */
 decl ::= varDecl
-       | fnDecl
-| fnPreDecl
+           | fnDecl
+           | fnPreDecl
 varDeclList ::= varDeclList varDecl
-              | /* epsilon */
+           | /* epsilon */
 varDecl ::= type id SEMICOLON
-          | type id LSQBRACKET INTLITERAL RSQBRACKET SEMICOLON
-          | type pointers id
-                      LSQBRACKET INTLITERAL RSQBRACKET SEMICOLON
-          | type pointers id SEMICOLON
+           | type id LSQBRACKET INTLITERAL RSQBRACKET SEMICOLON
+           | type pointers id
+           LSQBRACKET INTLITERAL RSQBRACKET SEMICOLON
+           | type pointers id SEMICOLON
 pointers ::= pointers TIMES
            | TIMES
 fnDecl ::= type id formals fnBody
-         | type pointers id formals fnBody
+           | type pointers id formals fnBody
 fnPreDecl ::= type id formals SEMICOLON
-            | type pointers id formals SEMICOLON
+           | type pointers id formals SEMICOLON
 formals ::= LPAREN RPAREN
-          | LPAREN formalsList RPAREN
+           | LPAREN formalsList RPAREN
 formalsList ::= formalDecl
-              | formalDecl COMMA formalsList
+           | formalDecl COMMA formalsList
 formalDecl  ::= type id
-              | type pointers id
+           | type pointers id
 type ::= VOID
-       | INT
+           | INT
 fnBody ::= LCURLY varDeclList stmtList RCURLY
 stmtList ::= stmtList stmt
-          |  /* epsilon */
+           |  /* epsilon */
 stmt ::= IF LPAREN exp RPAREN LCURLY varDeclList stmtList RCURLY
-      | IF LPAREN exp RPAREN LCURLY varDeclList stmtList RCURLY
-                      ELSE LCURLY varDeclList stmtList RCURLY
-      | WHILE LPAREN exp RPAREN
-                      LCURLY varDeclList stmtList RCURLY
-      | RETURN exp SEMICOLON
-      | RETURN SEMICOLON
-      | fncall SEMICOLON
-| FOR LPAREN forStmt SEMICOLON exp SEMICOLON forStmt
-                      RPAREN LCURLY varDeclList stmtList RCURLY
-      | assign SEMICOLON
+           | IF LPAREN exp RPAREN LCURLY varDeclList stmtList RCURLY
+           ELSE LCURLY varDeclList stmtList RCURLY
+           | WHILE LPAREN exp RPAREN
+           LCURLY varDeclList stmtList RCURLY
+           | RETURN exp SEMICOLON
+           | RETURN SEMICOLON
+           | fncall SEMICOLON
+           | FOR LPAREN forStmt SEMICOLON exp SEMICOLON forStmt
+           RPAREN LCURLY varDeclList stmtList RCURLY
+           | assign SEMICOLON
 assign ::= loc ASSIGN exp
          | loc PLUSEQL exp
          | loc MINUSEQL exp
@@ -75,7 +75,7 @@ term ::= loc
 fncall ::= id LPAREN RPAREN
          | id LPAREN actualList RPAREN
 actualList ::= exp
-             | actualList COMMA exp
+           | actualList COMMA exp
 loc ::= id
       | loc LSQBRACKET exp RSQBRACKET
       | TIMES exp
